@@ -1,0 +1,34 @@
+<div>
+  <h1>Knife <%= @knife.id %></h1>
+</div>
+
+<div>
+  <p><%= @knife.images %></p>
+</div>
+
+<div>
+  <h3>Customer</h3>
+  <p><%= @knife.customer_name %></p>
+</div>
+
+<div>
+  <h3>Materials</h3>
+  <p>Blade: <%= @knife.blade %></p>
+  <p>Handle: <%= @knife.handle %></p>
+  <p>Pins: <%= @knife.pins %></p>
+  <p>Guard: <%= @knife.guard %></p>
+  <p>Finish: <%= @knife.finish %></p>
+</div>
+
+<div>
+  <h3>Process</h3>
+  <p><%= @knife.process %></p>
+</div>
+
+<div>
+  <h3>Sheath</h3>
+  <p><%= @knife.sheath %></p>
+</div>
+
+<p>Created: <%= @knife.created_at %></p>
+<p>Updated:<%= @knife.updated_at %></p>

@@ -1,0 +1,9 @@
+<h1>All Knives</h1>
+
+<div>
+  <% @knives.each do |knife| %>
+  <p>
+    <%= link_to "Knife #{knife.id}", "/knives/#{knife.id}" %>
+  </p>
+  <% end %>
+</div>
