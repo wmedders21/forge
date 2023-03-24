@@ -1,9 +1,17 @@
 <h1>All Knives</h1>
+<div>
+  <%= link_to "Add a new knife", "/knives/new", method: "get", local: true %>
+</div><hr>
 
 <div>
   <% @knives.each do |knife| %>
-  <p>
-    <%= link_to "Knife #{knife.id}", "/knives/#{knife.id}" %>
-  </p>
+  <a href="/knives/<%="#{knife.id}"%>">
+  <div>
+    <%= "Knife #{knife.id}" %><br>
+    <% if knife.images.first %>
+        <%= image_tag knife.images.first, style: "width: 300px" %>
+    <% end %>
+  </div><hr>
+  </a>
   <% end %>
 </div>

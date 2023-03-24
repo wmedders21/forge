@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to "Home", "/" %>
+      <%= link_to "All Knives", "/knives" %>
+    </nav>
+
+   <% flash.each do |type, message| %>
+      <p style="color:red;"><%= message %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

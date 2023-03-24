@@ -1,9 +1,14 @@
 <div>
   <h1>Knife <%= @knife.id %></h1>
 </div>
+<%= button_to "Edit 📝", "/knives/#{@knife.id}/edit", method: :get %>
 
-<div>
-  <p><%= @knife.images %></p>
+<div style="float:right">
+  <% @knife.images.each do |img| %>
+  <div>
+    <%= image_tag img, style: "width: 500px; display: block", alt: "image of knife" %>  
+  </div>
+  <% end %>
 </div>
 
 <div>
@@ -30,5 +35,10 @@
   <p><%= @knife.sheath %></p>
 </div>
 
-<p>Created: <%= @knife.created_at %></p>
-<p>Updated:<%= @knife.updated_at %></p>
+<div>
+  <h3>Timestamps</h3>
+  <p>Created: <%= @knife.created_at.strftime('%b %e, %Y at %T %Z') %></p>
+  <p>Updated: <%= @knife.updated_at.strftime('%b %e, %Y at %T %Z') %></p>
+</div>
+
+<%= button_to "Delete this knife", "/knives/#{@knife.id}", method: :delete %>

@@ -1,0 +1,35 @@
+<h1>New Knife</h1>
+
+<%= form_with url: "/knives", method: "post", local: true do |f| %>
+  <%= f.label "Customer Name" %><br>
+  <%= f.text_field :customer_name%><br>
+  <h3>Materials</h3>
+  <%= f.label "Blade" %><br>
+  <%= f.text_field :blade%><br>
+  <%= f.label "Handle" %><br>
+  <%= f.text_field :handle%><br>
+  <%= f.label "Pins" %><br>
+  <%= f.text_field :pins%><br>
+  <%= f.label "Guard" %><br>
+  <%= f.text_field :guard%><br>
+  <%= f.label "Finish" %><br>
+  <%= f.text_field :finish%><br>
+  <h3>Process</h3>
+  <%= f.select(:process, options_for_select([
+      ["Forging", "Forging"],
+      ["Normalize", "Normalize"],
+      ["Thermals", "Thermals"],
+      ["Annealing", "Annealing"],
+      ["Rough Grind", "Rough Grind"],
+      ["Hardening", "Hardening"],
+      ["Tempering", "Tempering"],
+      ["Final Grind", "Final Grind"],
+      ["Etching", "Etching"],
+      ["Finished", "Finished"]
+    ], "Forging"))%><br>
+  <h3>Sheath</h3>
+    <%= f.text_field :sheath %>
+  <h3>Attach Images</h3>
+  <%= f.file_field :images, multiple: true %><br>
+  <%= f.submit %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_191657) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_014114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_191657) do
     t.string "handle"
     t.string "pins"
     t.string "guard"
-    t.integer "process", default: 0
+    t.string "process", default: "Forging"
     t.string "finish"
     t.string "sheath"
     t.string "photo_url"

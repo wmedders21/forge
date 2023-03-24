@@ -1,18 +1,11 @@
 class Knife < ApplicationRecord
   has_many_attached :images, dependent: :destroy
+  validates_presence_of :customer_name
   validates_presence_of :blade
-  # validates_presence_of :handle
-
-  enum :process, {
-    forging: 0,
-    normalize: 1,
-    thermals: 2,
-    annealing: 3,
-    rough_grind: 4,
-    hardening: 5, 
-    tempering: 6,
-    final_grind: 7,
-    etching: 8,
-    finished: 9
-  }
+  validates_presence_of :handle
+  validates_presence_of :pins
+  validates_presence_of :guard
+  validates_presence_of :finish
+  validates_presence_of :process
+  validates_presence_of :sheath
 end
