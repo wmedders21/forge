@@ -15,23 +15,24 @@ class KnivesController < ApplicationController
   end
   
   def create
-    knife = Knife.new(knife_params)
-    if knife.save
-      knife.images.attach(params[:images])
-      redirect_to "/knives/#{knife.id}"
+    @knife = Knife.new(knife_params)
+    if @knife.save
+      @knife.images.attach(params[:images])
+      redirect_to "/knives/#{@knife.id}"
     else
-      flash[:notice] = "Please fill out all fields"
+      flash[:alert] = "Please fill out all fields. Put N/A if necessary."
       redirect_to "/knives/new"
     end   
   end
   
   def update
     knife = Knife.find(params[:id])
-    if knife.update!(knife_params)
+    if knife.update(knife_params)
       knife.images.attach(params[:images])
       redirect_to "/knives/#{knife.id}"
     else
-      flash[:notice] = "Please fill out all fields"
+      flash[:alert] = "Please fill out all fields. Put N/A if necessary."
+      redirect_to "/knives/#{knife.id}/edit"
     end
   end
   
