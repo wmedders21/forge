@@ -1,59 +1,60 @@
-<div>
+<div class="container-fluid">
   <h1>Knife <%= @knife.id %></h1>
-</div>
-<%= button_to "Edit 📝", "/knives/#{@knife.id}/edit", method: :get %>
+  <%= button_to "Update Knife Attributes / Add Photos", "/knives/#{@knife.id}/edit", method: :get, class: "btn btn-success" %>
+</div><br>
 
-<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width:100%">
-  <div class="carousel-inner" role="listbox" style=" width:100%; height: 300px !important;">
-    <div class="carousel-item active">
-      <%= image_tag @knife.images[0], class: "d-block w-100", alt: "image of a knife" %>
-    </div>
-    <% if @knife.images.count > 1 %>
-      <% @knife.images[1..-1].each do |img| %>
-        <div class="carousel-item">
-          <%= image_tag img, class: "d-block w-100", alt: "image of knife" %>  
+<div class="container-fluid">
+  <div class="card" style="width: 25rem;">
+    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width:100%">
+      <div class="carousel-inner" role="listbox" style=" width:100%; height: 18rem !important;">
+        <div class="carousel-item active">
+          <%= image_tag @knife.images[0], class: "d-block w-100", alt: "image of a knife" %>
         </div>
-      <% end %>
+        <% if @knife.images.count > 1 %>
+          <% @knife.images[1..-1].each do |img| %>
+            <div class="carousel-item">
+              <%= image_tag img, class: "d-block w-100", alt: "image of knife" %>  
+            </div>
+          <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+        <% end %>
+    </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-    <% end %>
-</div>
 
-<div>
-  <h3>Customer</h3>
-  <p><%= @knife.customer_name %></p>
+  <div class="card-body">
+    <h3 class="card-title">Customer</h3>
+    <ul>
+      <li class="card-text"><%= @knife.customer_name %></li>
+    </ul>
+    <h3 class="card-title">Materials</h3>
+    <ul>
+      <li class="card-text">Blade: <%= @knife.blade %></li>
+      <li class="card-text">Handle: <%= @knife.handle %></li>
+      <li class="card-text">Pins: <%= @knife.pins %></li>
+      <li class="card-text">Guard: <%= @knife.guard %></li>
+      <li class="card-text">Finish: <%= @knife.finish %></li>
+    </ul>
+    <h3 class="card-title">Process</h3>
+    <ul>
+      <li class="card-text"><%= @knife.process %></li>
+    </ul>
+    <h3 class="card-title">Sheath</h3>
+    <ul>
+      <li class="card-text"><%= @knife.sheath %></li>
+    </ul>
+    <h3 class="card-title">Time Stamps</h3>
+    <ul>
+      <li class="card-text">Created: <%= @knife.created_at.strftime('%b %e, %Y at %T %Z') %></li>
+      <li class="card-text">Updated: <%= @knife.updated_at.strftime('%b %e, %Y at %T %Z') %></li>
+    </ul>
+    <%= button_to "Delete this knife", "/knives/#{@knife.id}", method: :delete, class: "btn btn-danger" %>
+  </div>
 </div>
-
-<div>
-  <h3>Materials</h3>
-  <p>Blade: <%= @knife.blade %></p>
-  <p>Handle: <%= @knife.handle %></p>
-  <p>Pins: <%= @knife.pins %></p>
-  <p>Guard: <%= @knife.guard %></p>
-  <p>Finish: <%= @knife.finish %></p>
-</div>
-
-<div>
-  <h3>Process</h3>
-  <p><%= @knife.process %></p>
-</div>
-
-<div>
-  <h3>Sheath</h3>
-  <p><%= @knife.sheath %></p>
-</div>
-
-<div>
-  <h3>Timestamps</h3>
-  <p>Created: <%= @knife.created_at.strftime('%b %e, %Y at %T %Z') %></p>
-  <p>Updated: <%= @knife.updated_at.strftime('%b %e, %Y at %T %Z') %></p>
-</div>
-
-<%= button_to "Delete this knife", "/knives/#{@knife.id}", method: :delete %>

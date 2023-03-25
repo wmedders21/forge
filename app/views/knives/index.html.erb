@@ -1,17 +1,21 @@
-<h1>All Knives</h1>
-<div>
-  <%= link_to "Add a new knife", "/knives/new", method: "get", local: true %>
+<div class="container-fluid">
+  <h1>All Knives</h1>
+  <%= link_to "Add a new knife", "/knives/new", method: "get", local: true, class: "btn btn-success" %>
 </div><hr>
 
-<div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
   <% @knives.each do |knife| %>
-  <a href="/knives/<%="#{knife.id}"%>">
-  <div>
-    <%= "Knife #{knife.id}" %><br>
-    <% if knife.images.first %>
-        <%= image_tag knife.images.first, style: "width: 300px" %>
-    <% end %>
-  </div><hr>
-  </a>
+    <div class="col">
+      <div class="card">
+        <% if knife.images.first %>
+          <%= image_tag knife.images.first, class: "card-img-top", alt: "..."%>
+        <% else %>
+          <img src="..." class="card-img-top" alt="...">
+        <% end %>
+        <div class="card-body">
+          <a href="/knives/<%= knife.id %>" class="btn btn-primary">Go to Knife <%= knife.id %></a>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
