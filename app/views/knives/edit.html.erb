@@ -1,35 +1,75 @@
-<h1>Edit Knife <%= @knife.id %></h1>
+<div class="container-fluid">
+  <h1>Editing Knife <%= @knife.id %></h1>
+</div><hr>
 
-<%= form_with url: "/knives/#{@knife.id}", method: "patch", local: true do |f| %>
-  <%= f.label "Customer Name" %><br>
-  <%= f.text_field :customer_name, value: @knife.customer_name %><br>
-  <h3>Materials</h3>
-  <%= f.label "Blade" %><br>
-  <%= f.text_field :blade, value: @knife.blade%><br>
-  <%= f.label "Handle" %><br>
-  <%= f.text_field :handle, value: @knife.handle%><br>
-  <%= f.label "Pins" %><br>
-  <%= f.text_field :pins, value: @knife.pins%><br>
-  <%= f.label "Guard" %><br>
-  <%= f.text_field :guard, value: @knife.guard%><br>
-  <%= f.label "Finish" %><br>
-  <%= f.text_field :finish, value: @knife.finish%><br>
-  <h3>Process</h3>
-  <%= f.select(:process, options_for_select([
-      ["Forging", "Forging"],
-      ["Normalize", "Normalize"],
-      ["Thermals", "Thermals"],
-      ["Annealing", "Annealing"],
-      ["Rough Grind", "Rough Grind"],
-      ["Hardening", "Hardening"],
-      ["Tempering", "Tempering"],
-      ["Final Grind", "Final Grind"],
-      ["Etching", "Etching"],
-      ["Finished", "Finished"]
-    ], @knife.process))%><br>
-  <h3>Sheath</h3>
-    <%= f.text_field :sheath, value: @knife.sheath %>
-  <h3>Attach Images</h3>
-  <%= f.file_field :images, multiple: true %><br>
-  <%= f.submit %>
-<% end %>
+<div class="container-fluid">
+  <div style="width:18rem">
+    <%= form_with url: "/knives/#{@knife.id}", method: "patch", local: true do |f| %>
+      <div class="mb-3">
+        <h3>Customer</h3>
+      </div>
+      <div class="mb-3">
+        <%= f.label "Name", class: "form-label" %>
+        <%= f.text_field :customer_name, value: @knife.customer_name, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <h3>Materials</h3>
+      </div>
+      <div class="mb-3">
+        <%= f.label "Blade", class: "form-label" %>
+        <%= f.text_field :blade, value: @knife.blade, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label "Handle", class: "form-label" %>
+        <%= f.text_field :handle, value: @knife.handle, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label "Pins", class: "form-label" %>
+        <%= f.text_field :pins, value: @knife.pins, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label "Guard", class: "form-label" %>
+        <%= f.text_field :guard, value: @knife.guard, class: "form-control" %>
+      </div>
+        <%= f.label "Finish", class: "form-label" %>
+        <%= f.text_field :finish, value: @knife.finish, class: "form-control" %>
+      <div class="mb-3">
+        <h3>Process</h3>
+      </div>
+      <div class="mb-3">
+      <%= f.select(:process, options_for_select([
+        ["Forging", "Forging"],
+        ["Normalize", "Normalize"],
+        ["Thermals", "Thermals"],
+        ["Annealing", "Annealing"],
+        ["Rough Grind", "Rough Grind"],
+        ["Hardening", "Hardening"],
+        ["Tempering", "Tempering"],
+        ["Final Grind", "Final Grind"],
+        ["Etching", "Etching"],
+        ["Finished", "Finished"]
+        ], @knife.process), {}, { class: "form-select form-select-sm mb-3" }) %>
+      </div>
+      <div class="mb-3">
+        <h3>Sheath</h3>
+      </div>
+      <div class="mb-3">
+        <%= f.text_field :sheath, value: @knife.sheath, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <h3>Attach Images</h3>
+      </div>
+      <div class="mb-3">
+        <%= f.file_field :images, multiple: true, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.submit "Save", class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <%= link_to "Cancel", "/knives/#{@knife.id}", method: :get, class: "btn btn-danger"%>
+</div>
