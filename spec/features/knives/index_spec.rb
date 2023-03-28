@@ -10,7 +10,7 @@ RSpec.describe 'The Knives Index Page' do
   end
   it 'displays the title' do
     visit '/knives'
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content 'All Knives'
   end
 end
