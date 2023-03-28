@@ -52,8 +52,7 @@ class KnivesController < ApplicationController
       :guard,
       :finish,
       :process,
-      :sheath,
-      :images
+      :sheath
     )
   end
 end

@@ -7,7 +7,7 @@
   <% @knives.each do |knife| %>
     <div class="col">
       <div class="card">
-        <% if knife.images.first %>
+        <% if knife.images.attached? %>
           <%= image_tag knife.images.first, class: "card-img-top", alt: "..."%>
         <% else %>
           <img src="..." class="card-img-top" alt="...">

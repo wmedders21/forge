@@ -8,7 +8,7 @@
     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width:100%">
       <div class="carousel-inner" role="listbox" style=" width:100%; height: 18rem !important;">
         <div class="carousel-item active">
-          <% if @knife.images[0] %>
+          <% if @knife.images.attached? %>
             <%= image_tag @knife.images[0], class: "d-block w-100", alt: "image of a knife" %>
           <% end %>
         </div>
