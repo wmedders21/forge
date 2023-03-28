@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: forge_production
   username: forge
   password: <%= ENV["FORGE_DATABASE_PASSWORD"] %>
