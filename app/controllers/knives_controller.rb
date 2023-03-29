@@ -17,7 +17,8 @@ class KnivesController < ApplicationController
   def create
     @knife = Knife.new(knife_params)
     if @knife.save
-      @knife.images.attach(params[:images])
+      begin
+        @knife.images.attach(params[:images])
       rescue StandardError => e
         puts "Rescued: #{e.inspect}"
       end
