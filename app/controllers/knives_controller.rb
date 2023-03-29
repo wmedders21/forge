@@ -18,6 +18,9 @@ class KnivesController < ApplicationController
     @knife = Knife.new(knife_params)
     if @knife.save
       @knife.images.attach(params[:images])
+      rescue StandardError => e
+        puts "Rescued: #{e.inspect}"
+      end
       redirect_to "/knives/#{@knife.id}"
     else
       flash[:alert] = "Please fill out all fields. Put N/A if necessary."
